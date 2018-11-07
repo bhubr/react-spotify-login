@@ -12,20 +12,31 @@ I used the original component to help students build a project based on GitHub's
 
 ## Usage
 
-```js
+```javascript
+// index.js
 import React from 'react';
 import ReactDOM from 'react-dom';
 import SpotifyLogin from 'react-spotify-login';
+import { clientId, redirectUri } from './settings';
 
 const onSuccess = response => console.log(response);
 const onFailure = response => console.error(response);
 
 ReactDOM.render(
-  <SpotifyLogin clientId="ac56fad434a3a3c1561e"
+  <SpotifyLogin clientId={clientId}
+    redirectUri={redirectUri}
     onSuccess={onSuccess}
     onFailure={onFailure}/>,
   document.getElementById('example')
 );
+```
+
+Settings file example:
+
+```
+// settings.js
+export const clientId = 'ac56fad434a3a3c1561e';
+export const redirectUri = 'http://localhost:3000';
 ```
 
 ### Props

@@ -1,6 +1,6 @@
 {
   "name": "react-spotify-login",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "A React Component for Spotify Implicit Grant Workflow Login",
   "main": "dist/SpotifyLogin.js",
   "scripts": {
