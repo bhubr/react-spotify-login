@@ -1,6 +1,6 @@
 # React Spotify Login
 
-React component for [Spotify Implicit Grant Workflow login](https://developer.spotify.com/documentation/general/guides/authorization-guide/#implicit-grant-flow).
+React component for [Spotify Implicit Grant Workflow login](https://developer.spotify.com/documentation/general/guides/authorization-guide/#implicit-grant-flow) and [Spotify Authorization Code Flow login](https://developer.spotify.com/documentation/general/guides/authorization-guide/#authorization-code-flow).
 
 ## Credits
 
@@ -24,6 +24,7 @@ const onFailure = response => console.error(response);
 
 ReactDOM.render(
   <SpotifyLogin clientId={clientId}
+    responseType={responseType}
     redirectUri={redirectUri}
     onSuccess={onSuccess}
     onFailure={onFailure}/>,
@@ -47,6 +48,12 @@ export const redirectUri = 'http://localhost:3000';
 
 Client ID for Spotify OAuth application.
 
+### `responseType`
+
+`{string}` _required_
+
+Authentication response type. Allowed values: `token` or `code`.
+
 #### `redirectUri`
 
 `{string}`
@@ -57,7 +64,7 @@ Registered redirect URI for Spotify OAuth application.
 
 `{string}`
 
-Scope for Spotify OAuth application. Defaults to `user:email`.
+Scopes for Spotify OAuth application (coma separated). Defaults to `user-read-private`.
 
 #### `className`
 
@@ -65,11 +72,11 @@ Scope for Spotify OAuth application. Defaults to `user:email`.
 
 CSS class for the login button.
 
-#### `buttonText`
+#### `button`
 
-`{string}`
+`{string}` or `{node}`
 
-Text content for the login button.
+Content for the login button.
 
 #### `onRequest`
 
@@ -81,7 +88,7 @@ Callback for every request.
 
 `{function}`
 
-Callback for successful login. An object will be passed as an argument to the callback, e.g. `{ "access_token": "..." }`.
+Callback for successful login. An object will be passed as an argument to the callback, e.g. `{ "access_token": "..." }` or `{ "code": "..." }`.
 
 #### `onFailure`
 
